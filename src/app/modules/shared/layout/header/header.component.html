@@ -1,0 +1,12 @@
+<div>
+  <h1 [ngStyle]="{ 'font-style': 'italic' }">{{ title }}</h1>
+  <p *ngFor="let num of array">{{ num }}</p>
+  <p>{{ capitalText | lowercase }}</p>
+  <p>{{ isoDate | date : "dd MMM yyyy" }}</p>
+  <p>the price is {{ amount | currency : "YEN" }}</p>
+  <p>number is {{ num | number }}</p>
+  <!--custom pipe-->
+  <p>{{ birthday | birthday }}</p>
+
+  <p>this app version is {{ version }}</p>
+</div>
