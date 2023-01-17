@@ -10,6 +10,8 @@ import { sharedModule } from './modules/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './modules/home/home.component';
 import { ProfileComponent } from './modules/profile/profile.component';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, ProfileComponent],
@@ -22,6 +24,8 @@ import { ProfileComponent } from './modules/profile/profile.component';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

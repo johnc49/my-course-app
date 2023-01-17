@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable, of, Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   formGroup!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private router: Router) {}
 
   observable$: Observable<number> = of(1, 2, 3, 4, 5);
 
@@ -54,5 +55,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subscription?.unsubscribe();
     this.formSubscription?.unsubscribe();
+  }
+
+  goToProfileAndLogCabbage(): void {
+    console.log('cabbage');
+    this.router.navigate(['/profile']);
   }
 }
