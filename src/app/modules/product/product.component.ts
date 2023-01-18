@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/product.interface';
 import { ProductService } from 'src/app/services/product.service';
+import { getProductsAction } from 'src/app/state/product.action';
+import { getProducts } from 'src/app/state/product.selectors';
 
 @Component({
   selector: 'app-product',
@@ -8,20 +12,12 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent implements OnInit {
-  products: Product[] = [];
+  products$: Observable<Product[]> | undefined;
 
-  constructor(private productService: ProductService) {}
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe(
-      (productResponse) => {
-        console.log('Http request is successful');
-        this.products = productResponse.products;
-      },
-      (error) => {
-        console.log('Http request is NOT successful');
-        console.error(error);
-      }
-    );
+    this.store.dispatch(getProductsAction());
+    this.products$ = this.store.select(getProducts);
   }
 }

@@ -13,4 +13,4 @@ const pipes = [BirthdayPipe];
   declarations: [...components, ...pipes],
   exports: [...components],
 })
-export class sharedModule {}
+export class SharedModule {}
